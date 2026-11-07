@@ -13,14 +13,18 @@ export type Service = {
 };
 
 export type Product = {
-  slug: "audire";
+  slug: string;
   name: string;
+  /** Logo del producto */
+  logo: ImageAsset;
   tagline: string;
   description: string;
   highlights: string[];
-  verticals: string[];
-  modules: string[];
+  /** Procesos que ya están en producción */
+  processes: { name: string; detail: string }[];
   cta: Link;
+  /** Sitio propio del producto */
+  website: Link;
 };
 
 export type Metric = { label: string; value: string | null };
@@ -89,7 +93,7 @@ export type SiteContent = {
     secondaryCta: Link;
   };
   services: Service[];
-  audire: Product;
+  product: Product;
   cases: CaseStudy[];
   testimonials: Testimonial[];
   metrics: Metric[];

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Hero from "@/components/hero/Hero";
-import AudireFeature from "@/components/sections/AudireFeature";
+import ProductFeature from "@/components/sections/ProductFeature";
 import CasesList from "@/components/sections/CasesList";
 import CtaBand from "@/components/sections/CtaBand";
 import Metrics from "@/components/sections/Metrics";
@@ -31,8 +31,8 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section labelledBy="audire-title" className="pt-0 sm:pt-0">
-        <AudireFeature variant="teaser" />
+      <Section labelledBy="producto-title" className="pt-0 sm:pt-0">
+        <ProductFeature variant="teaser" />
       </Section>
 
       <Section labelledBy="casos-title" className="pt-0 sm:pt-4">

@@ -357,7 +357,7 @@ function AccessGrid() {
 
 /* ---------------------------------------------------------------- casos */
 
-// Ilustración de un caso. Audire usa su panel (AudireMockup); Tortoriello, el mapa de operación.
+// Ilustración de un caso. El caso Audire usa su panel (AudireMockup); Tortoriello, el mapa de operación.
 export function CaseIllustration({ slug, className }: { slug: string; className?: string }) {
   if (slug !== "transporte-tortoriello") return null;
   return (

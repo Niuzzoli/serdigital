@@ -84,21 +84,29 @@ export const site: SiteContent = {
     },
   ],
 
-  // PRODUCTO: Audire (preparado para tener su propia landing en el futuro)
-  audire: {
-    slug: "audire",
-    name: "Audire",
-    tagline: "La documentación de tu personal, flota y contratos, siempre auditada.",
+  // PRODUCTO PROPIO: Tamiz (fuente: https://tamiz.digital)
+  product: {
+    slug: "tamiz",
+    name: "Tamiz",
+    logo: { src: "/producto-propio/tamiz.png", width: 431, height: 149 },
+    tagline: "Datos que entran en caos, resultados que salen listos.",
     description:
-      "Audire es nuestra plataforma de gestión documental. Centraliza la documentación de personal, flota y contratos, y audita que esté completa y vigente según la normativa de cada vertical.",
+      "Tamiz es nuestra plataforma para automatizar el trabajo repetitivo con datos. Recibe planillas, CSV o PDF tal como llegan, los procesa siempre con el mismo flujo probado y entrega el resultado en un Excel consolidado, en tu base de datos o directo en tu ERP. Sin IA: cada proceso es determinístico, auditable y sin costos variables por uso.",
     highlights: [
-      "Documentación de personal, flota y contratos en un solo lugar",
-      "Auditoría de la documentación requerida según cada vertical",
-      "Control de vencimientos",
+      "Acepta Excel, CSV y PDF sin plantillas especiales",
+      "Valida los datos en cada paso y avisa los errores al instante",
+      "Entrega en Excel, base de datos o por API a tu ERP",
+      "Cada corrida queda registrada: quién, cuándo, desde qué PC y con qué resultado",
+      "Corre en las PC de tu equipo, con control y auditoría centralizados",
     ],
-    verticals: [], // TODO: rubros y normativas que cubre (ej. petróleo y gas, transporte)
-    modules: [], // TODO: módulos principales
-    cta: { label: "Consultar por Audire", href: "/contacto" }, // TODO: cambiar si hay demo o acceso
+    processes: [
+      { name: "Consolidar Excels", detail: "Una carpeta de planillas en un solo panel" },
+      { name: "Validar CSV", detail: "Revisa la estructura de cada archivo" },
+      { name: "Indicadores de viajes", detail: "Calcula $/km desde las planillas operativas" },
+      { name: "Facturas PDF a Excel", detail: "Extrae los datos de cada factura" },
+    ],
+    cta: { label: "Pedir una demo", href: "/contacto" },
+    website: { label: "Visitar tamiz.digital", href: "https://tamiz.digital" },
   },
 
   // CASOS DE ÉXITO. Con result: null no se muestra la fila "El resultado"; al cargar un texto, aparece sola.
@@ -109,14 +117,14 @@ export const site: SiteContent = {
       logo: { src: "/casos/logo-audire.png", width: 439, height: 329, invertOnLight: true },
       title: "Una plataforma para auditar documentación por vertical",
       summary:
-        "Diseñamos y desarrollamos Audire, nuestra plataforma de gestión documental con auditoría según la normativa de cada vertical.",
+        "Diseñamos y desarrollamos Audire, una plataforma de gestión documental con auditoría según la normativa de cada vertical.",
       problem:
         "Las empresas que trabajan con personal, flota y contratos deben mantener al día documentación exigida por normativas distintas según el rubro, y ese control suele hacerse a mano.",
       solution:
         "Una plataforma que centraliza la documentación de personal, flota y contratos y audita automáticamente qué falta o qué está por vencer según la vertical.",
       result: null, // TODO: resultado verificable
       resultMetrics: [], // TODO: ej. { label: "Empresas que lo usan", value: "..." }
-      tags: ["Producto", "Gestión documental"],
+      tags: ["Plataforma", "Gestión documental"],
     },
     {
       slug: "transporte-tortoriello",
@@ -169,7 +177,7 @@ export const site: SiteContent = {
     country: "Argentina",
     showStreet: true,
     hours: "Lunes a viernes de 9 a 18 h",
-    coverage: "Trabajamos con empresas de Neuquén, Río Negro y todo el país.",
+    coverage: "Nos ubicamos en vaca muerta y trabajamos con empresas de todo el país.",
     linkedin: "https://www.linkedin.com/in/danieliuzzolino/",
   },
 

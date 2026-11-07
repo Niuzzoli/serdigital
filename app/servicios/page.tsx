@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
-import AudireFeature from "@/components/sections/AudireFeature";
+import ProductFeature from "@/components/sections/ProductFeature";
 import CtaBand from "@/components/sections/CtaBand";
 import ServicesGrid from "@/components/sections/ServicesGrid";
 import { Container, SectionHeading } from "@/components/ui/Section";
@@ -8,7 +8,7 @@ import { Container, SectionHeading } from "@/components/ui/Section";
 export const metadata: Metadata = pageMetadata({
   title: "Servicios",
   description:
-    "Consultoría de digitalización ágil, desarrollo de software a medida y seguridad informática. Y Audire, nuestra plataforma de gestión documental.",
+    "Consultoría de digitalización ágil, desarrollo de software a medida y seguridad informática. Y Tamiz, nuestra plataforma para automatizar el procesamiento de datos.",
   path: "/servicios",
 });
 
@@ -27,10 +27,10 @@ export default function ServiciosPage() {
         <ServicesGrid detailed />
       </Container>
 
-      {/* Producto: bloque autocontenido, listo para pasar a /audire en el futuro */}
-      <section id="audire" aria-label="Audire" className="scroll-mt-24 py-20 sm:py-28">
+      {/* Producto: bloque autocontenido, listo para pasar a /tamiz en el futuro */}
+      <section id="tamiz" aria-label="Tamiz" className="scroll-mt-24 py-20 sm:py-28">
         <Container>
-          <AudireFeature variant="full" />
+          <ProductFeature variant="full" />
         </Container>
       </section>
 

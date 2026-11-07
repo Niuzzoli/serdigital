@@ -78,7 +78,7 @@ export default async function Footer() {
         <p>
           © {year} {site.name}
         </p>
-        <p>Hecho en el Alto Valle, Argentina</p>
+        <p>Alto Valle, Argentina</p>
       </Container>
     </footer>
   );

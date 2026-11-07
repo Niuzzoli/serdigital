@@ -16,13 +16,13 @@ Dueños, gerentes y responsables de operación de empresas del Alto Valle (Neuqu
 Sitio institucional de Serdigital, consultora de transformación digital. Su trabajo es generar confianza y consultas (formulario y WhatsApp). El éxito se mide en contactos calificados.
 
 ## Positioning
-Servicios a medida (consultoría de digitalización ágil, desarrollo de software a medida, seguridad informática) más un producto propio, Audire: gestión documental de personal, flota y contratos con auditoría según la normativa de cada vertical.
+Servicios a medida (consultoría de digitalización ágil, desarrollo de software a medida, seguridad informática) más un producto propio, Tamiz (https://tamiz.digital): automatiza el procesamiento de datos (Excel, CSV, PDF) con flujos determinísticos y auditables, sin IA, y entrega en Excel, base de datos o API del ERP. Audire es un cliente (caso de éxito), no un producto propio.
 
 ## Capabilities and Constraints
-- Sitemap: /, /servicios (Audire destacado aparte), /casos, /blog, /blog/[slug], /contacto.
-- Servicio = a medida con el cliente. Producto = algo que ya existe y se contrata (hoy solo Audire).
+- Sitemap: /, /servicios (Tamiz destacado aparte, ancla #tamiz), /casos, /blog, /blog/[slug], /contacto.
+- Servicio = a medida con el cliente. Producto = algo que ya existe y se contrata (hoy solo Tamiz).
 - Sin proveedor de email conectado todavía: el formulario debe degradar a WhatsApp y email.
-- Pendiente (TODO del dueño): logo, métricas, resultados de los casos, detalle de Audire, cargo y empresa de los testimonios.
+- Pendiente (TODO del dueño): logo, métricas, resultados de los casos, planes/precios de Tamiz, cargo y empresa de los testimonios.
 
 ## Brand Commitments
 - Nombre: Serdigital. Colores de marca del sitio anterior: azul #176BE0, naranja #FF4500, fondo azul noche #0D131A.

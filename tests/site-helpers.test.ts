@@ -60,6 +60,12 @@ test("cada caso tiene su logo y el archivo existe en public", async () => {
   }
 });
 
+test("el logo del producto existe en public", async () => {
+  const { existsSync } = await import("node:fs");
+  const { join } = await import("node:path");
+  expect(existsSync(join(process.cwd(), "public", site.product.logo.src))).toBe(true);
+});
+
 test("el logo de Audire (blanco) se invierte en modo claro", () => {
   expect(site.cases.find((c) => c.slug === "audire")?.logo?.invertOnLight).toBe(true);
 });
