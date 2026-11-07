@@ -1,26 +1,305 @@
 @import "tailwindcss";
 
+/* light: aplica estilos solo cuando el tema activo es el claro (ej. light:hidden) */
+@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
+
+/* =====================================================================
+  TOKENS DE DISEÑO: cambiá la paleta, radios, sombras y tiempos acá.
+  Todo el sitio lee estas variables; ningún componente usa colores sueltos.
+  Las tipografías se eligen en app/layout.tsx (next/font) y llegan como
+  --font-display-src y --font-mono-src.
+   ===================================================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Fondos (azul noche de la marca y variantes un poco más claras) */
+  --bg: #0d131a;
+  --bg-2: #111a24;
+  --surface: #152130;
+  --surface-2: #1a2839;
+  --line: rgb(176 196 222 / 0.12);
+  --line-strong: rgb(176 196 222 / 0.22);
+
+  /* Texto */
+  --text: #e9eef4;
+  --muted: #8c9aab;
+
+  /* Acento único (naranja de marca ajustado para pantalla oscura) */
+  --accent: #ff5a1f;
+  --accent-hover: #ff7340;
+  --accent-ink: #1a0a03;
+  /* Texto sobre el relleno oscuro del botón (fijo en ambos temas) */
+  --on-accent-ink: #f6f1ec;
+  /* Naranja para TEXTO chico (en claro se oscurece para mantener contraste AA) */
+  --accent-text: #ff6a33;
+
+  /* Azul de marca: solo apoyo (líneas, brillos, detalles) */
+  --blue: #176be0;
+  /* Nodos de la red del hero */
+  --node: #aac4e6;
+
+  /* Estados */
+  --success: #6fd3a5;
+  --danger: #ff7b7b;
+
+  /* Forma y profundidad */
+  --radius-card: 16px;
+  --radius-input: 10px;
+  --shadow-card: 0 24px 48px -24px rgb(3 8 14 / 0.7);
+  --shadow-float: 0 12px 32px -12px rgb(3 8 14 / 0.65);
+
+  /* Movimiento: una sola curva para todo el sitio */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 300ms;
+  --dur-base: 500ms;
+  --dur-slow: 700ms;
+
+  /* Capas (z-index) */
+  --z-nav: 40;
+  --z-menu: 50;
+  --z-cursor: 60;
+
+  color-scheme: dark;
+}
+
+/* TEMA CLARO: mismos nombres de tokens, otros valores. El oscuro es el modo por defecto.
+  El atributo data-theme lo pone el script de app/layout.tsx según el sistema del visitante
+   o lo que eligió con el botón de la barra (ver lib/theme.ts). */
+:root[data-theme="light"] {
+  --bg: #f5f7fa;
+  --bg-2: #edf1f6;
+  --surface: #ffffff;
+  --surface-2: #f3f6fa;
+  --line: rgb(13 19 26 / 0.1);
+  --line-strong: rgb(13 19 26 / 0.18);
+
+  --text: #0d131a;
+  --muted: #4c5a6b;
+
+  --accent: #ff5a1f;
+  --accent-hover: #ff7340;
+  --accent-ink: #1a0a03;
+  --accent-text: #c93c08;
+
+  --blue: #176be0;
+  --node: #5b7fae;
+
+  --success: #13774a;
+  --danger: #c42b2b;
+
+  --shadow-card: 0 24px 48px -28px rgb(13 30 52 / 0.22);
+  --shadow-float: 0 12px 32px -14px rgb(13 30 52 / 0.25);
+
+  color-scheme: light;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-ink: var(--accent-ink);
+  --color-on-accent-ink: var(--on-accent-ink);
+  --color-accent-text: var(--accent-text);
+  --color-blue: var(--blue);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+
+  --font-sans: var(--font-display-src), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-src), ui-monospace, monospace;
+
+  --radius-card: var(--radius-card);
+  --radius-input: var(--radius-input);
+  --shadow-card: var(--shadow-card);
+  --shadow-float: var(--shadow-float);
+  --ease-out: var(--ease-out);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  input,
+  textarea {
+    caret-color: var(--accent);
+  }
+  /* Scrollbar en la paleta del sitio */
+  html {
+    scrollbar-color: var(--surface-2) var(--bg);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Separador muy sutil que usan varias secciones */
+.hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
+}
+
+/* Transición de página (React ViewTransition en app/template.tsx) */
+::view-transition {
+  pointer-events: none;
+}
+::view-transition-old(.page) {
+  animation: 180ms var(--ease-out) both page-out;
+}
+::view-transition-new(.page) {
+  animation: 420ms var(--ease-out) 60ms both page-in;
+}
+@keyframes page-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+/* El header no se mueve durante la transición */
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header) {
+  display: none;
+}
+::view-transition-new(site-header) {
+  animation: none;
+}
+
+/* 404: nodo suelto (components/illustrations/DisconnectedNode.tsx).
+   La línea punteada fluye hacia el nodo sin llegar; el nodo late y se mueve apenas.
+   Sin animación, queda el dibujo quieto con el nodo y la línea visibles. */
+.nf-pulse {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .nf-reach {
+    animation: nf-flow 1.6s linear infinite;
+  }
+  .nf-stray {
+    transform-box: fill-box;
+    animation: nf-drift 5s ease-in-out infinite alternate;
+  }
+  .nf-pulse {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: nf-pulse 2.6s var(--ease-out) infinite;
+  }
+}
+@keyframes nf-flow {
+  to {
+    stroke-dashoffset: -18;
+  }
+}
+@keyframes nf-drift {
+  to {
+    transform: translate(5px, -7px);
+  }
+}
+@keyframes nf-pulse {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(3.2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}
+
+/* Cambio de tema con el botón: fundido corto de toda la página */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 280ms;
+  animation-timing-function: var(--ease-out);
+}
+
+/* =====================================================================
+  TÍTULOS ANIMADOS (components/ui/BlurText.tsx)
+  Cada letra arranca naranja, desenfocada, más grande, inclinada y 10px abajo,
+  y se asienta escalonada (--bt-step entre letras). Con el mouse sobre una palabra,
+  las otras se desenfocan. Para ajustar el efecto, tocá estos valores.
+   ===================================================================== */
+.bt-word {
+  display: inline-block;
+  white-space: nowrap;
+  transition:
+    filter 450ms var(--ease-out),
+    opacity 450ms var(--ease-out);
+}
+.bt-letter {
+  display: inline-block;
+  transform-origin: 50% 100%;
+  transition:
+    transform 700ms var(--ease-out),
+    filter 700ms var(--ease-out),
+    opacity 700ms var(--ease-out),
+    color 630ms var(--ease-out);
+  transition-delay: calc(var(--i) * var(--bt-step, 20ms));
+}
+.blur-text:not([data-shown="true"]) .bt-letter {
+  opacity: 0.32;
+  filter: blur(5.6px);
+  transform: translateY(10px) scale(1.12) rotate(-8deg);
+  color: var(--accent);
+}
+/* Solo antes de aparecer: el navegador prepara las capas y después las libera */
+.blur-text:not([data-shown="true"]) .bt-letter {
+  will-change: transform, filter, opacity;
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .blur-text[data-focus="false"][data-shown="true"]:has(.bt-word:hover) .bt-word:not(:hover) {
+    filter: blur(4px);
+    opacity: 0.35;
+  }
 }

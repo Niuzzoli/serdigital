@@ -1,0 +1,21 @@
+SER DIGITAL - PAQUETE DE LOGO v1.0 (noviembre 2026)
+
+CONTENIDO
+01-Logo-Azul        Logo en azul/cian (el que elegiste), con "SERDIGITAL" todo junto
+02-Logo-Naranja     Misma version en naranja (#FF4500, el de la web)
+   fondo-claro/     Para fondos blancos o claros
+   fondo-oscuro/    Para fondos oscuros (texto SER en blanco, isotipo mas luminoso)
+   Cada carpeta: horizontal, vertical, isotipo y solo-texto, en SVG (vectorial) y PNG transparente
+03-Monocromo        Negro y blanco, una sola tinta (sellos, facturas, grabado, fax, etc.)
+04-Favicon-y-app    favicon.ico, favicon.svg, apple-touch-icon, iconos 16 a 512 px (azul y naranja)
+05-Redes-sociales   Avatares 1080x1080 (WhatsApp, Instagram, LinkedIn) y portadas LinkedIn 1584x396
+06-Guia-de-marca.pdf  Colores, tipografia, zona de seguridad, tamanos minimos y errores a evitar
+
+COLORES
+Azul Ser #2045B4 | Cian Digital #1DB9DB | Azul web #176BE0 | Naranja #FF4500 | Marino #0D131A | Gris humo #ECEFF3
+TIPOGRAFIA
+Logotipo: Orbitron Bold (SIL OFL, libre uso). Textos: Inter.
+
+NOTA
+El isotipo "SD" fue vectorizado a partir de la imagen de 1024 px: el relieve y el degradé estan conservados,
+pero se simplificaron las lineas finas y destellos de la textura original. Los SVG son escalables sin perdida.

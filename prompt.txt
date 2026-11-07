@@ -1,0 +1,80 @@
+Quiero rediseñar desde cero el sitio de mi consultora, Serdigital (hoy en serdigital.com.ar, hecho en un constructor de sitios). Necesito una primera base sólida y moderna para después iterar yo con ajustes. Antes de escribir código, entrá en modo plan: mostrame el plan (estructura de carpetas, componentes, decisiones) y esperá mi OK.
+
+## Referencia propia
+Mi portafolio, que ya hicimos, está en: [RUTA LOCAL DEL PROYECTO DEL PORTAFOLIO]. Leelo primero y reutilizá su enfoque y sus componentes de interacción con el mouse y de animación (cursor, hover, tarjetas, botones, transiciones, etc.), adaptándolos a este proyecto. Quiero la misma sensación de pulido, pero con MENOS "scroll world": nada de scroll secuestrado, secciones pineadas ni scroll horizontal forzado. El scroll tiene que ser normal y natural.
+
+## Stack
+- Next.js (App Router) + TypeScript + Tailwind CSS.
+- Motion (framer-motion) para animaciones. Sin librerías pesadas (nada de GSAP ni Lenis).
+- Despliegue en Vercel. Que `npm run build` y el lint pasen limpios.
+- Contenido del blog en MDX o archivos locales (sin base de datos por ahora).
+
+## Sitemap (reemplaza las 6 páginas actuales)
+- `/` Inicio
+- `/servicios` Servicios (con Audire destacado como producto)
+- `/casos` Casos de éxito (incluye testimonios)
+- `/blog` listado + `/blog/[slug]` detalle
+- `/contacto`
+Menú de 4 ítems: Servicios, Casos, Blog, Contacto (botón destacado). Footer con datos de contacto.
+
+Redirecciones 301 en next.config:
+/consultoria-productos → /servicios
+/consultoria-servicios → /servicios
+/consultoria-contacto → /contacto
+/blog-list → /blog
+/w11 → /
+
+## Criterio de contenido (importante)
+- SERVICIO = lo hacemos a medida con el cliente (consultoría, desarrollo de software, seguridad informática).
+- PRODUCTO = algo que ya existe y se contrata: hoy solo Audire (plataforma de gestión documental de personal, flota y contratos, con auditoría de la documentación requerida según la normativa de cada vertical). En /servicios va como sección destacada aparte, con espacio para pasar a su propia landing en el futuro.
+- Casos: Audire y Transporte Tortoriello (digitalización de logística, taller, pañol y RRHH, integrando datos transversales). Cada caso con: cliente, problema, solución, resultado. Dejá los resultados numéricos como TODO si no los tengo.
+- Testimonios: están en la página de Casos y en una franja del Inicio. Textos existentes:
+  - "La consultora Ser Digital transformó nuestros procesos, mejorando la eficiencia y facilitando la toma de decisiones." — Rodrigo Iparraguirre
+  - "Gracias a Ser Digital, implementamos soluciones ágiles que optimizaron nuestro trabajo y aumentaron nuestra productividad." — Federico Mazzei
+  Sin avatares de stock: usá iniciales o un placeholder claro.
+- NO inventes métricas, clientes ni logos. El "150+ clientes" del sitio viejo no está verificado: no lo uses; dejá un bloque de métricas con valores TODO fáciles de editar.
+- Tono: profesional, claro, directo, en español rioplatense neutro. Hero provisorio: "Digitalizamos procesos para que tu empresa decida y opere más rápido." Dejalo en un solo archivo de contenido (`content/site.ts`) para que yo lo edite fácil.
+
+## Datos reales
+- Email: contacto@serdigital.com.ar
+- WhatsApp: +54 9 299 548 2790
+- Dirección: Mengelle 748 (Argentina) · Lunes a Viernes de 9 a 18 h
+- LinkedIn: https://www.linkedin.com/in/danieliuzzolino/
+- Servicios: Consultoría de digitalización ágil, Desarrollo de software a medida, Seguridad informática.
+
+## Dirección visual
+- Moderna, limpia, nada tosca: mucho aire, tipografía grande y con carácter (una sola familia buena + una mono para detalles técnicos), grilla clara, bordes sutiles, tarjetas con profundidad suave.
+- Tema oscuro por defecto con acento de un solo color. Definí TODO con tokens (variables CSS/Tailwind) para que yo pueda cambiar paleta y tipografías en un solo lugar.
+- Cero fotos de stock. Si falta imagen, usá composiciones propias (gradientes, patrones, mockups de interfaz hechos en código).
+
+## Hero
+Sin video de stock. Hacé un fondo interactivo liviano en canvas: una red de nodos/líneas que representa procesos conectándose y ordenándose, que reacciona suavemente al cursor. Debe pausarse cuando no está visible, tener fallback estático en mobile y con `prefers-reduced-motion`, y no afectar el rendimiento.
+
+## Interacciones (pequeñas y con criterio)
+- Tarjetas con brillo/spotlight que sigue al mouse.
+- Botones magnéticos sutiles (CTA principal).
+- Parallax muy leve en elementos del hero.
+- Hover con microtransiciones en links, menú y tarjetas.
+- Cursor personalizado discreto SOLO en desktop, opcional y fácil de apagar con una constante.
+- Todas se desactivan en dispositivos táctiles y con `prefers-reduced-motion`.
+
+## Animaciones
+- Suaves y consistentes: easing definido una sola vez (ej. cubic-bezier tipo easeOutExpo), duraciones de 300–700 ms, desplazamientos cortos.
+- Aparición al entrar en viewport una sola vez (`once`), con stagger leve en listas.
+- Transiciones de página discretas (fade + leve desplazamiento).
+- Navbar que se compacta o cambia de fondo al scrollear.
+- Evitá animar propiedades que causan layout; usá transform y opacity.
+
+## Contacto
+Formulario (nombre, email, mensaje) con validación y estados de envío/éxito/error, más botón directo a WhatsApp con mensaje prellenado. Dejá el envío en un route handler con un TODO claro para conectar el servicio de email que elija (no pongas claves ni credenciales en el código).
+
+## Calidad
+- Responsive real (mobile primero), foco visible, contraste correcto, HTML semántico, imágenes optimizadas con next/image.
+- SEO: metadata por página, Open Graph, sitemap, robots, JSON-LD de Organization.
+- Lighthouse objetivo: 90+ en performance y accesibilidad.
+
+## Forma de trabajo
+1. Plan primero (modo plan) y esperá mi OK.
+2. Construí por fases: (a) setup + tokens + layout + navbar/footer, (b) Inicio con hero, (c) Servicios y Casos, (d) Blog con 2 notas de ejemplo claramente marcadas como placeholder, (e) Contacto + redirecciones + SEO.
+3. Al terminar cada fase, corré build y lint y resumime qué hiciste.
+4. Al final dame una lista corta de "qué podés cambiar fácilmente y dónde" (colores, textos, interacciones, métricas) y de los TODO pendientes de mi parte.
