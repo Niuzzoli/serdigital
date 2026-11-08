@@ -177,7 +177,7 @@ export const site: SiteContent = {
     country: "Argentina",
     showStreet: true,
     hours: "Lunes a viernes de 9 a 18 h",
-    coverage: "Nos ubicamos en vaca muerta y trabajamos con empresas de todo el país.",
+    coverage: "Nos ubicamos en Vaca Muerta y trabajamos con empresas de todo el país.",
     linkedin: "https://www.linkedin.com/in/danieliuzzolino/",
   },
 
