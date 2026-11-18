@@ -75,8 +75,16 @@ export default async function Footer() {
         </div>
       </Container>
       <Container className="flex flex-col gap-2 border-t border-line py-6 text-sm text-muted sm:flex-row sm:justify-between">
-        <p>
-          © {year} {site.name}
+        <p className="flex flex-wrap items-center gap-x-4 gap-y-1">
+          <span>
+            © {year} {site.name}
+          </span>
+          <Link href="/privacidad" className={linkClass}>
+            Privacidad
+          </Link>
+          <Link href="/terminos" className={linkClass}>
+            Términos
+          </Link>
         </p>
         <p>Alto Valle, Argentina</p>
       </Container>

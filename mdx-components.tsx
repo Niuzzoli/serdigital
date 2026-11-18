@@ -19,6 +19,8 @@ const components: MDXComponents = {
   a: ({ href = "", ...props }) =>
     href.startsWith("/") ? (
       <Link href={href} className="text-accent-text underline underline-offset-4" {...props} />
+    ) : href.startsWith("mailto:") ? (
+      <a href={href} className="text-accent-text underline underline-offset-4" {...props} />
     ) : (
       <a href={href} target="_blank" rel="noopener noreferrer" className="text-accent-text underline underline-offset-4" {...props} />
     ),
